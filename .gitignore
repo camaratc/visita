@@ -1,0 +1,5 @@
+.vscode/
+env/
+visitas/__pychache__/
+cadastro/__pycache__/
+cadastro/migrations/__pycache__/
