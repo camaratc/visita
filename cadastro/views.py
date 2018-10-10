@@ -8,7 +8,7 @@ def index(request):
     return HttpResponse('Hello Index')
 
 def cadastro_pessoas(request):
-    return HttpResponse('Cadastro Pessoas')
+    return render(request, "pessoas.html", {'nome': 'matheus'})
 
 def cadastro_visitas(request):
     return HttpResponse('Cadastro Visitas')
