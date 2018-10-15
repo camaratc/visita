@@ -12,28 +12,6 @@ from .forms import PessoaForm
 def index(request):
     return HttpResponse('Hello Index')
 
-def get_estados(request):
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM localidades_estado')
-
-    data = []
-    for item in cursor:
-        data.append(item)
-
-    json = simplejson.dumps(data)
-    return HttpResponse(json, content_type='application/json')
-
-def get_cidades(request):
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM localidades_cidade')
-
-    data = []
-    for item in cursor:
-        data.append(item)
-
-    json = simplejson.dumps(data)
-    return HttpResponse(json, content_type='application/json')
-
 def cadastro_pessoas(request):
     if request.method == "POST":
         form = PessoaForm(request.POST)

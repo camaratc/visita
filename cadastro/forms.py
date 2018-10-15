@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import widgets
 
 from .models import Pessoa
 
@@ -9,8 +10,6 @@ class PessoaForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super(PessoaForm, self).__init__(*args, **kwargs)
-        
-        # self.fields['host'].required = False
 
         """ for item in self.fields:
             if item == 'descricao':
