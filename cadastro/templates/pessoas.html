@@ -31,21 +31,19 @@
                         {{ field.label_tag }}
                         {{ field }}
                     </div>
-            {% endif %}
-            {% endfor %}
-                    <div class="input-field col s4">
-                        <label for="id_estado">UF</label>
-                        <select id="id_estado">
-
-                        </select>    
+            {% elif field.id_for_label == "id_estado" %}
+                    <div class="col s4">
+                        {{ field.label_tag }}
+                        {{ field }}
                     </div>
-                    <div class="input-field col s4">
-                        <label for="id_cidade">Cidade</label>
-                        <select id="id_cidade">
-
-                        </select>   
+            {% elif field.id_for_label == "id_cidade" %}
+                    <div class="col s4">
+                        {{ field.label_tag }}
+                        {{ field }}
                     </div>
                 </div>
+            {% endif %} 
+            {% endfor %}
         <button type="submit" class="save btn btn-success">Enviar</button>
     </form>
 {% endblock %}

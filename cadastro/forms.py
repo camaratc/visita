@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import widgets
+import simplejson as json
 
 from .models import Pessoa
 
@@ -11,10 +12,8 @@ class PessoaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PessoaForm, self).__init__(*args, **kwargs)
 
-        """ for item in self.fields:
-            if item == 'descricao':
-                self.fields[item].widget = forms.Textarea(attrs={'class': 'form-control input-descricao'})
-            elif item == 'email':
-                self.fields[item].widget = forms.EmailInput(attrs={'class': 'form-control'})
-            else:
-                self.fields[item].widget = forms.TextInput(attrs={'class': 'form-control'}) """
+        self.fields['estado'] = forms.CharField(widget=forms.Select())
+        self.fields['cidade'] = forms.CharField(widget=forms.Select())
+
+        # self.fields['estado'].widget = forms.Select(attrs={'class': 'browser-default'})
+        # self.fields['cidade'].widget = forms.Select(attrs={'class': 'browser-default'})

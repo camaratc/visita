@@ -4,7 +4,7 @@ $(document).ready(function () {
         var options = '<option value="" selected disabled>Selecionar Estado</option>';
 
         $.each(data, function (key, val) {
-            options += '<option value="' + val.nome + '">' + val.nome + '</option>';
+            options += '<option value="' + val.sigla + '">' + val.nome + '</option>';
         });
 
         $("#id_estado").html(options);
@@ -26,6 +26,8 @@ $(document).ready(function () {
             });
             $("#id_cidade").html(options_cidades);
 
+            $('select').formSelect();
         }).change();
+
     });
 });
