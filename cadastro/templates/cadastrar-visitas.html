@@ -1,4 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="container page-content">
+    <h5 class="center-align">Nova Visita</h5>
+
+    <form method="POST" id="form-visita">
+        {% csrf_token %}
+        {% for field in form %}
+        {% if field.id_for_label == "id_pessoa" %}
+            <div class="row">
+                <div class="col s6">
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+        {% elif field.id_for_label == "id_setor" %}
+                <div class="col s6">
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col s12">
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+        <div class="center-align">
+            <button type="submit" class="submit-recuo btn waves-effect waves-light light-blue lighten-3">Cadastrar</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

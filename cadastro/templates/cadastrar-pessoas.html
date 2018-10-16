@@ -4,7 +4,7 @@
     <div class="container page-content">
         <h5 class="center-align">Nova Pessoa</h5>
         
-        <form method="POST" class="">
+        <form method="POST" id="form-pessoa">
             {% csrf_token %}
             {% for field in form %}
                 {% if field.id_for_label == "id_nome" or field.id_for_label == "id_endereco" %}
@@ -46,7 +46,7 @@
                 {% endif %} 
                 {% endfor %}
             <div class="center-align">
-                <button type="submit" class="btn waves-effect waves-light light-blue lighten-3">Enviar</button>
+                <button type="submit" class="btn waves-effect waves-light light-blue lighten-3">Cadastrar</button>
             </div>
         </form>
     </div>

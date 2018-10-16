@@ -7,7 +7,10 @@ import datetime
 import simplejson
 
 from .models import Pessoa
+from .models import Visita
+
 from .forms import PessoaForm
+from .forms import VisitaForm
 
 def index(request):
     return render(request, 'home.html', {})
@@ -29,4 +32,19 @@ def cadastro_pessoas(request):
     return render(request, "cadastrar-pessoas.html", {'form': form})
 
 def cadastro_visitas(request):
-    return render(request, 'cadastrar-visitas.html', {})
+    if request.method == "POST":
+        form = VisitaForm(request.POST)
+
+        if form.is_valid():
+            visita = form.save(commit = False)
+            visita.data = timezone.now()
+            visita.horarioEntrada = timezone.now()
+            visita.horarioSaida = None
+
+            visita.save()
+
+            return redirect('cadastro:index')
+    else:
+        form = VisitaForm()
+
+    return render(request, "cadastrar-visitas.html", {'form': form})

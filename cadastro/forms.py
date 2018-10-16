@@ -3,6 +3,7 @@ from django.forms import widgets
 import simplejson as json
 
 from .models import Pessoa
+from .models import Visita
 
 class PessoaForm(forms.ModelForm):
     class Meta:
@@ -19,4 +20,12 @@ class PessoaForm(forms.ModelForm):
         # self.fields['cidade'].widget = forms.Select(attrs={'class': 'browser-default'})
 
 class VisitaForm(forms.ModelForm):
-    pass
+    class Meta:
+        model = Visita
+        fields = ('pessoa', 'setor', 'observacao')
+
+    def __init__(self, *args, **kwargs):
+        super(VisitaForm, self).__init__(*args, **kwargs)
+
+        self.fields['observacao'].required = False
+        self.fields['observacao'].widget = forms.Textarea(attrs={'class': 'materialize-textarea'})
