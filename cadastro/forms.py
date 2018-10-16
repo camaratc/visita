@@ -17,3 +17,6 @@ class PessoaForm(forms.ModelForm):
 
         # self.fields['estado'].widget = forms.Select(attrs={'class': 'browser-default'})
         # self.fields['cidade'].widget = forms.Select(attrs={'class': 'browser-default'})
+
+class VisitaForm(forms.ModelForm):
+    pass

@@ -13,3 +13,14 @@ class Pessoa(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Visita(models.Model):
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    data = models.DateField('Data', default=timezone.now())
+    horarioEntrada = models.TimeField('Horário de Entrada')
+    horarioSaida = models.TimeField('Horário de Saída')
+    setor = models.CharField('Setor da Visita', max_length=100)
+    horarioCadastro = models.DateTimeField('Horário de Cadastro', default=timezone.now())
+
+    def __str__(self):
+        return self.pessoa.nome

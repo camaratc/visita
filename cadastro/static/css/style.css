@@ -12,6 +12,24 @@ main {
     flex: 1 0 auto;
 }
 
+.page-content{
+    margin-top: 50px;
+}
+
 .select-dropdown{
     overflow-y: auto !important;
+}
+
+.jumbotron{
+    position: relative;
+    padding-top: 15px;
+    width: 100%;
+    height: 50%;
+    background-color: antiquewhite;
+    z-index: -1;
+    margin-bottom: 50px;
+}
+
+.card-image{
+    height: 250px;
 }

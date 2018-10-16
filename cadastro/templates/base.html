@@ -9,23 +9,22 @@
     <body>
         <nav class="light-blue lighten-3">
             <div class="container nav-wrapper ">
-                <a href="#" class="brand-logo">Portaria</a>
+                <a href="{% url 'cadastro:index' %}" class="brand-logo">Portaria</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="">Sass</a></li>
-                    <li><a href="">Components</a></li>
-                    <li><a href="">JavaScript</a></li>
+                    <li><a href="{% url 'cadastro:cadastro_pessoas' %}">Cadastrar Pessoa</a></li>
+                    <li><a href="{% url 'cadastro:cadastro_visitas' %}">Cadastrar Visita</a></li>
                 </ul>
             </div>
         </nav>
 
-        <main class="container main">
+        <main class="main">
             {% block content %}
             {% endblock %}
         </main>
 
         <footer class="page-footer light-blue lighten-3">
             <div class="footer-copyright">
-                <div class="container">
+                <div class="container center-align">
                     <span>&copy;2018. Câmara Municipal de Três Corações.</span>
                 </div>
             </div>

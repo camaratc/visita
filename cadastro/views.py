@@ -10,7 +10,7 @@ from .models import Pessoa
 from .forms import PessoaForm
 
 def index(request):
-    return HttpResponse('Hello Index')
+    return render(request, 'home.html', {})
 
 def cadastro_pessoas(request):
     if request.method == "POST":
@@ -26,7 +26,7 @@ def cadastro_pessoas(request):
     else:
         form = PessoaForm()
 
-    return render(request, "pessoas.html", {'form': form})
+    return render(request, "cadastrar-pessoas.html", {'form': form})
 
 def cadastro_visitas(request):
-    return HttpResponse('Cadastro Visitas')
+    return render(request, 'cadastrar-visitas.html', {})
