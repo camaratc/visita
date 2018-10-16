@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.getJSON('https://gist.githubusercontent.com/ografael/2037135/raw/5d31e7baaddd0d599b64c3ec04827fc244333447/estados_cidades.json', function (data) {
+    $.getJSON('https://raw.githubusercontent.com/camaratc/visitas/master/cadastro/static/js/estados_cidades.json', function (data) {
         var items = [];
         var options = '<option value="" selected disabled>Selecionar Estado</option>';
 
