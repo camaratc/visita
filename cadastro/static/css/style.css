@@ -49,3 +49,43 @@ main {
     height: 20px;
     margin-top: 30px;
 }
+
+/* Histórico ===== */
+
+.lista{
+    margin-top: 30px;
+    /* border-collapse: separate !important;
+    border-spacing: 0; */
+    border: solid;
+    border-width: 2px;
+    border-radius: 13px;
+}
+
+.visita-item{
+    cursor: pointer;
+    height: 80px;
+    background-color: #6cdb6f;
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    transition: ease-in-out 0.75s background-color;
+}
+
+.visita-item:hover{
+    background-color: #e8f5e9;
+}
+
+.visitando{
+    height: 80px;
+    background-color: #f1685e;
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    transition: ease-in-out 0.75s background-color;
+}
+
+.visitando:hover{
+    background-color: #fcb9b2;
+}

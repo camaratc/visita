@@ -10,4 +10,5 @@ urlpatterns = [
     path('pessoas/', views.cadastro_pessoas, name='cadastro_pessoas'),
     path('visitas/', views.cadastro_visitas, name='cadastro_visitas'),
     path('historico/', views.historico_visitas, name='historico_visitas'),
+    path('historico/<int:pk>', views.visita_detalhes, name='visita_detalhes')
 ]

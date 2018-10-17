@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.core import serializers
 from django.http import HttpResponse
@@ -55,3 +55,7 @@ def historico_visitas(request):
     print(visitas)
 
     return render(request, 'historico-visitas.html', {'visitas': visitas})
+
+def visita_detalhes(request, pk):
+    visita = get_object_or_404(Visita, pk=pk)
+    return render(request, 'visita-detalhes.html', {'visita': visita})

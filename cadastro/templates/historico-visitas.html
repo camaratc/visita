@@ -1,10 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<ul>
-    {% for item in visitas %}
-    <li>{{item.pessoa.nome}}</li>
-    {% endfor %}
-</ul>
+<div class='container'>
+    <h5 class='center-align'>Histórico de Visitas</h5>
+
+    <table class="lista">
+        <tr>
+            <th width="40%">Visitante</th>
+            <th width="25%">Setor</th>
+            <th width="15%">Data</th>
+            <th width="10%">Entrada</th>
+            <th width="10%">Saída</th>
+        </tr>
+        {% for item in visitas %}
+        {% if item.horarioSaida == None %}
+            <tr class='visita-item visitando' onclick="window.location='{% url 'cadastro:visita_detalhes' pk=item.pk %}';">
+        {% else %}
+            <tr class='visita-item' onclick="window.location='{% url 'cadastro:visita_detalhes' pk=item.pk %}';">
+        {% endif %}
+                <td>{{ item.pessoa.nome }}</td>
+                <td>{{ item.setor }}</td>
+                <td>{{ item.data|date:'d/M/Y' }}</td>
+                <td>{{ item.horarioEntrada }}</td>
+                {% if item.horarioSaida == None %}
+                    <td>-</tr>
+                {% else %}
+                    <td>{{ item.horarioSaida }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</div>
 
 {% endblock %}
