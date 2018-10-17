@@ -1,6 +1,5 @@
 from django import forms
 from django.forms import widgets
-import simplejson as json
 
 from .models import Pessoa
 from .models import Visita
@@ -17,6 +16,8 @@ class PessoaForm(forms.ModelForm):
         self.fields['cidade'] = forms.CharField(widget=forms.Select())
 
 class VisitaForm(forms.ModelForm):
+    pessoa = forms.ModelChoiceField(queryset=Pessoa.objects.all(), empty_label='Selecionar Visitante')
+
     class Meta:
         model = Visita
         fields = ('pessoa', 'setor', 'observacao')

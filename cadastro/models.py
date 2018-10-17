@@ -11,6 +11,9 @@ class Pessoa(models.Model):
     cidade = models.CharField('Cidade', max_length=100)
     dataCadastro = models.DateTimeField('Data de Cadastro', default=timezone.now())
 
+    class Meta:
+        ordering = ['nome']
+
     def __str__(self):
         return self.nome
 

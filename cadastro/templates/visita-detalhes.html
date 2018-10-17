@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ visita }}
+<div class="container visita-detalhes">
+    <h6><b>Nome:</b> {{ visita.pessoa.nome }}</h6>
+    <p><b>Setor da Visita:</b> {{ visita.setor }}</p>
+    <p><b>Observações:</b> {{ visita.observacao }}</p>
+    <p><b>Data:</b> {{ visita.data }}</p>
+    <p><b>Hora de Entrada:</b> {{ visita.horarioEntrada }}</p>
+    <p><b>Hora de Saída:</b> 
+        {% if visita.horarioSaida == None %}
+            (Pendente)
+        {% else %}
+            {{ visita.horarioSaida }}
+        {% endif %}
+    </p>
+</div>
 {% endblock %}
