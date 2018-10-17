@@ -18,7 +18,7 @@ class Visita(models.Model):
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
     data = models.DateField('Data', default=timezone.now())
     horarioEntrada = models.TimeField('Horário de Entrada')
-    horarioSaida = models.TimeField('Horário de Saída', null=True)
+    horarioSaida = models.TimeField('Horário de Saída', null=True, blank=True)
     setor = models.CharField('Setor da Visita', max_length=100)
     observacao = models.TextField('Observação', max_length=1000, blank=True)
 

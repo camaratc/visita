@@ -1,3 +1,5 @@
+/* Geral ===== */
+
 html{
     color: #373737;
 }
@@ -16,9 +18,7 @@ main {
     margin-top: 50px;
 }
 
-.select-dropdown{
-    overflow-y: auto !important;
-}
+/* Home ===== */
 
 .jumbotron{
     position: relative;
@@ -34,6 +34,18 @@ main {
     height: 250px;
 }
 
+/* Forms ===== */
+
+.select-dropdown{
+    overflow-y: auto !important;
+}
+
 .submit-recuo{
     margin-top: 20px;
+}
+
+.add-pessoa{
+    width: 20px;
+    height: 20px;
+    margin-top: 30px;
 }

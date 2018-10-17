@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<ul>
+    {% for item in visitas %}
+    <li>{{item.pessoa.nome}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

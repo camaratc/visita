@@ -13,6 +13,7 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{% url 'cadastro:cadastro_pessoas' %}">Cadastrar Pessoa</a></li>
                     <li><a href="{% url 'cadastro:cadastro_visitas' %}">Cadastrar Visita</a></li>
+                    <li><a href="{% url 'cadastro:historico_visitas' %}">Histórico de Visitas</a></li>
                 </ul>
             </div>
         </nav>
@@ -31,7 +32,7 @@
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.3.1.js"  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script src="{% static 'js/jquery.mask.js' %}"></script>
+        <script src="http://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/master/dist/jquery.mask.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="{% static 'js/main.js' %}"></script>
         <script src="{% static 'js/estados_cidades.js' %}"></script>

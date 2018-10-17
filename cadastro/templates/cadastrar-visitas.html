@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load staticfiles %}
 
 <div class="container page-content">
     <h5 class="center-align">Nova Visita</h5>
@@ -13,8 +14,11 @@
                     {{ field.label_tag }}
                     {{ field }}
                 </div>
+                <div class="col s1">
+                    <a href="{% url 'cadastro:cadastro_pessoas' %}"><img class="add-pessoa" src="{% static 'img/add.svg' %}" alt="Adicionar Pessoa" /></a>
+                </div>
         {% elif field.id_for_label == "id_setor" %}
-                <div class="col s6">
+                <div class="col s5">
                     {{ field.label_tag }}
                     {{ field }}
                 </div>

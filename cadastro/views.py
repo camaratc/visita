@@ -16,7 +16,7 @@ def index(request):
     return render(request, 'home.html', {})
 
 def cadastro_pessoas(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = PessoaForm(request.POST)
 
         if form.is_valid():
@@ -29,10 +29,10 @@ def cadastro_pessoas(request):
     else:
         form = PessoaForm()
 
-    return render(request, "cadastrar-pessoas.html", {'form': form})
+    return render(request, 'cadastrar-pessoas.html', {'form': form})
 
 def cadastro_visitas(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = VisitaForm(request.POST)
 
         if form.is_valid():
@@ -47,4 +47,11 @@ def cadastro_visitas(request):
     else:
         form = VisitaForm()
 
-    return render(request, "cadastrar-visitas.html", {'form': form})
+    return render(request, 'cadastrar-visitas.html', {'form': form})
+
+def historico_visitas(request):
+    visitas = Visita.objects.all().order_by('-horarioEntrada')[:10:1]
+
+    print(visitas)
+
+    return render(request, 'historico-visitas.html', {'visitas': visitas})
