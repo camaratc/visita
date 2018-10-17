@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.core import serializers
 from django.http import HttpResponse
 from django.db import connection
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 import datetime
 import simplejson
 
@@ -50,9 +51,11 @@ def cadastro_visitas(request):
     return render(request, 'cadastrar-visitas.html', {'form': form})
 
 def historico_visitas(request):
-    visitas = Visita.objects.all().order_by('-horarioEntrada')[:10:1]
+    visitas_lista = Visita.objects.all().order_by('-horarioEntrada')
+    paginator = Paginator(visitas_lista, 10)
 
-    print(visitas)
+    page = request.GET.get('page')
+    visitas = paginator.get_page(page)
 
     return render(request, 'historico-visitas.html', {'visitas': visitas})
 

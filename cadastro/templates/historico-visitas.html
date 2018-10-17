@@ -30,6 +30,29 @@
             </tr>
         {% endfor %}
     </table>
+
+    <div class="pagination center-align">
+        <span class="step-links">
+            <span class="current">
+                Página {{ visitas.number }} de {{ visitas.paginator.num_pages }}.
+            </span><br />
+
+            {% if visitas.has_previous %}
+                <a href="?page=1">&laquo;</a>
+                <a href="?page={{ visitas.previous_page_number }}">Anterior</a>
+                {% if visitas.has_next %}
+                    <span>|</span>
+                {% endif %}
+            {% endif %}
+        
+            
+        
+            {% if visitas.has_next %}
+                <a href="?page={{ visitas.next_page_number }}">Próxima</a>
+                <a href="?page={{ visitas.paginator.num_pages }}">&raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 </div>
 
 {% endblock %}
