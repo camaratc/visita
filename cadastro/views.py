@@ -62,3 +62,10 @@ def historico_visitas(request):
 def visita_detalhes(request, pk):
     visita = get_object_or_404(Visita, pk=pk)
     return render(request, 'visita-detalhes.html', {'visita': visita})
+
+def confirmar_saida(request, pk):
+    visita = Visita.objects.filter(pk=pk).update(horarioSaida=timezone.now())
+    visita = get_object_or_404(Visita, pk=pk)
+
+    return render(request, 'visita-detalhes.html', {'visita': visita})
+

@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container visita-detalhes">
-    <h6><b>Nome:</b> {{ visita.pessoa.nome }}</h6>
+    <h6><b>Visitante:</b> {{ visita.pessoa.nome }}</h6>
     <p><b>Setor da Visita:</b> {{ visita.setor }}</p>
-    <p><b>Observações:</b> {{ visita.observacao }}</p>
+    {% if visita.observacao != None and visita.observacao != '' %}
+        <p><b>Observações:</b> {{ visita.observacao }}</p>
+    {% endif %}
     <p><b>Data:</b> {{ visita.data }}</p>
     <p><b>Hora de Entrada:</b> {{ visita.horarioEntrada }}</p>
     <p><b>Hora de Saída:</b> 
         {% if visita.horarioSaida == None %}
-            (Pendente)
+            (Pendente)</p>
+            <button class="btn waves-effect waves-light light-blue lighten-3" onclick="window.location=`{% url 'cadastro:confirmar_saida' pk=visita.pk %}`;">Confirmar Saída</button>
         {% else %}
             {{ visita.horarioSaida }}
+            </p>
         {% endif %}
-    </p>
 </div>
 {% endblock %}

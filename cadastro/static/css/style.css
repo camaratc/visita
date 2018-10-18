@@ -89,3 +89,9 @@ main {
 .visitando:hover{
     background-color: #fcb9b2;
 }
+
+/* Detalhes ===== */
+
+.visita-detalhes{
+    margin-top: 40px;
+}
