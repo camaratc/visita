@@ -2,14 +2,14 @@
 {% load staticfiles %}
 {% block content %}
 
-<div class="jumbotron">
-</div>
+{% comment %} <div class="jumbotron">
+</div> {% endcomment %}
 
-<div class="container row">
+<div class="container row" id="options">
     <div class="col s12 m6 l4">
         <a href="{% url 'cadastro:cadastro_pessoas' %}">
             <div class="card">
-                <div class="card-image">
+                <div class="card-image" id="card-visitante">
                     <img class="img-option" src="{% static 'img/team.svg' %}" />
                 </div>
                 <div class="card-content center-align">
@@ -22,7 +22,7 @@
     <div class="col s12 m6 l4">
         <a href="{% url 'cadastro:cadastro_visitas' %}">
             <div class="card">
-                <div class="card-image">
+                <div class="card-image" id="card-visita">
                     <img class="img-option" src="{% static 'img/visitor.svg' %}" />
                 </div>
                 <div class="card-content center-align">
@@ -35,7 +35,7 @@
     <div class="col s12 m6 l4">
         <a href="{% url 'cadastro:historico_visitas' %}">
             <div class="card">
-                <div class="card-image">
+                <div class="card-image" id="card-historico">
                     <img class="img-option" src="{% static 'img/checklist.svg' %}" />
                 </div>
                 <div class="card-content center-align">

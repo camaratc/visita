@@ -18,6 +18,15 @@ main {
     margin-top: 50px;
 }
 
+/* Navbar ===== */
+
+.arrow{
+    position: fixed;
+    height: 30px;
+    width: 90px;
+    margin-top: 20px;
+}
+
 /* Home ===== */
 
 .jumbotron{
@@ -30,9 +39,12 @@ main {
     margin-bottom: 50px;
 }
 
+#options{
+    margin-top: 10%;
+}
+
 .card-image{
     height: 220px;
-    background-color: rgb(248, 248, 248);
 }
 
 .img-option{
@@ -42,6 +54,17 @@ main {
     width: 180px;
 }
 
+#card-visitante{
+    background-color: #c5cae9;
+}
+
+#card-visita{
+    background-color: #ffcdd2;
+}
+
+#card-historico{
+    background-color: #c8e6c9;
+}
 /* Forms ===== */
 
 .select-dropdown{

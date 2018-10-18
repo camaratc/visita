@@ -8,6 +8,20 @@
     </head>
     <body>
         <nav class="light-blue lighten-3">
+            {% if request.get_full_path == '/pessoas/' or request.get_full_path == '/visitas/' or request.get_full_path == '/historico/' %}
+                <div>
+                    <a href="{% url 'cadastro:index' %}">
+                        <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
+                    </a>
+                </div>
+            {% elif request.get_full_path == '/' %}
+            {% else %}
+                <div>
+                    <a href="{% url 'cadastro:historico_visitas' %}">
+                        <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
+                    </a>
+                </div>
+            {% endif %}
             <div class="container nav-wrapper ">
                 <a href="{% url 'cadastro:index' %}" class="brand-logo">Portaria</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">

@@ -14,9 +14,9 @@
         </tr>
         {% for item in visitas %}
         {% if item.horarioSaida == None %}
-            <tr class='visita-item visitando' onclick="window.open(`{% url 'cadastro:visita_detalhes' pk=item.pk %}`, '_blank')">
+            <tr class='visita-item visitando' onclick="window.location=`{% url 'cadastro:visita_detalhes' pk=item.pk %}`">
         {% else %}
-            <tr class='visita-item' onclick="window.open(`{% url 'cadastro:visita_detalhes' pk=item.pk %}`, '_blank')">
+            <tr class='visita-item' onclick="window.location=`{% url 'cadastro:visita_detalhes' pk=item.pk %}`">
         {% endif %}
                 <td>{{ item.pessoa.nome }}</td>
                 <td>{{ item.setor }}</td>
