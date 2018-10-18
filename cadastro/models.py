@@ -25,5 +25,8 @@ class Visita(models.Model):
     setor = models.CharField('Setor da Visita', max_length=100)
     observacao = models.TextField('Observação', max_length=1000, blank=True)
 
+    class Meta:
+        ordering = ['-pk']
+
     def __str__(self):
         return self.pessoa.nome
