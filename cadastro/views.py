@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from django.db import connection
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 import datetime
-import simplejson
 
 from .models import Pessoa
 from .models import Visita
@@ -26,7 +25,7 @@ def cadastro_pessoas(request):
 
             pessoa.save()
 
-            return redirect('cadastro:index')
+            return redirect('cadastro:cadastro_visitas')
     else:
         form = PessoaForm()
 
@@ -44,7 +43,7 @@ def cadastro_visitas(request):
 
             visita.save()
 
-            return redirect('cadastro:index')
+            return redirect('cadastro:historico_visitas')
     else:
         form = VisitaForm()
 
