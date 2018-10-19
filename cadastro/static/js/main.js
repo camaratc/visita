@@ -19,9 +19,16 @@ $(document).ready(() => {
         let expression = new RegExp(searchField, "i");
 
         $.getJSON('http://127.0.0.1:8000/api/pessoas/', (data) => {
+            let count = 0;
+
             $.each(data, (key, value) => {
+                if(count == 5){
+                    return false;
+                }
+
                 if(value.fields.nome.search(expression) != -1 || value.fields.cpf.search(expression) != -1){
                     $('#result').append(`<li>${ value.fields.nome } - ${ value.fields.cpf }</li>`);
+                    count++;
                 }
             });
         });
