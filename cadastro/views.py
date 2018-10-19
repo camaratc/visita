@@ -48,8 +48,20 @@ def cadastro_visitas(request):
         form = VisitaForm()
 
     visitas = Visita.objects.filter(horarioSaida=None).order_by('-horarioEntrada')
+    nomes = []
 
-    return render(request, 'cadastrar-visitas.html', {'form': form, 'visitas': visitas})
+    context = {
+        'form': form,
+        'visitas': visitas,
+        'nomes': nomes
+    }
+
+    return render(request, 'cadastrar-visitas.html', context)
+
+def api_pessoas(request):
+    lista = Pessoa.objects.all()
+    lista = serializers.serialize('json', lista)
+    return HttpResponse(lista, content_type="application/json")
 
 def historico_visitas(request):
     visitas_lista = Visita.objects.all().order_by('-data', '-horarioEntrada')
@@ -67,4 +79,3 @@ def visita_detalhes(request, pk):
 def confirmar_saida(request, pk):
     visita = Visita.objects.filter(pk=pk).update(horarioSaida=timezone.now())
     return cadastro_visitas(request)
-

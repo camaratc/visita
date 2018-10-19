@@ -12,4 +12,5 @@ urlpatterns = [
     path('visitas/<int:pk>', views.confirmar_saida, name='confirmar_saida'),
     path('historico/', views.historico_visitas, name='historico_visitas'),
     path('visita/<int:pk>', views.visita_detalhes, name='visita_detalhes'),
+    path('api/pessoas/', views.api_pessoas, name='api_pessoas')
 ]
