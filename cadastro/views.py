@@ -43,14 +43,16 @@ def cadastro_visitas(request):
 
             visita.save()
 
-            return redirect('cadastro:historico_visitas')
+            return redirect('cadastro:cadastro_visitas')
     else:
         form = VisitaForm()
 
-    return render(request, 'cadastrar-visitas.html', {'form': form})
+    visitas = Visita.objects.filter(horarioSaida=None).order_by('-horarioEntrada')
+
+    return render(request, 'cadastrar-visitas.html', {'form': form, 'visitas': visitas})
 
 def historico_visitas(request):
-    visitas_lista = Visita.objects.all().order_by('-horarioEntrada')
+    visitas_lista = Visita.objects.all().order_by('-data', '-horarioEntrada')
     paginator = Paginator(visitas_lista, 10)
 
     page = request.GET.get('page')
@@ -64,7 +66,5 @@ def visita_detalhes(request, pk):
 
 def confirmar_saida(request, pk):
     visita = Visita.objects.filter(pk=pk).update(horarioSaida=timezone.now())
-    visita = get_object_or_404(Visita, pk=pk)
-
-    return render(request, 'visita-detalhes.html', {'visita': visita})
+    return cadastro_visitas(request)
 

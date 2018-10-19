@@ -83,6 +83,15 @@ main {
 
 /* Histórico ===== */
 
+.visitantes-ativos{
+    margin-top: 30px;
+}
+
+.visitas-presentes{
+    margin: 0 auto;
+    width: 700px;
+}
+
 .lista{
     margin-top: 30px;
     /* border-collapse: separate !important;
@@ -94,13 +103,13 @@ main {
 
 .visita-item{
     cursor: pointer;
-    height: 80px;
+    height: 25px;
     background-color: #6cdb6f;
     border: solid;
     border-width: 2px;
     border-radius: 5px;
     padding: 10px 20px 10px 20px;
-    transition: ease-in-out 0.75s background-color;
+    transition: ease-in-out 1s background-color;
 }
 
 .visita-item:hover{
@@ -108,13 +117,13 @@ main {
 }
 
 .visitando{
-    height: 80px;
+    height: 25px;
     background-color: #f1685e;
     border: solid;
     border-width: 2px;
     border-radius: 5px;
     padding: 10px 20px 10px 20px;
-    transition: ease-in-out 0.75s background-color;
+    transition: ease-in-out 1s background-color;
 }
 
 .visitando:hover{

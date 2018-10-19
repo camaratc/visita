@@ -36,5 +36,34 @@
             <button type="submit" class="submit-recuo btn waves-effect waves-light light-blue lighten-3">Cadastrar</button>
         </div>
     </form>
+
+    <div class="center-align visitantes-ativos">
+        <h5>Visitantes Presentes:</h5>
+
+        {% if visitas %}
+        <table class="visitas-presentes">
+            <tr>
+                <th width="40%">Visitante</th>
+                <th>Setor</th>
+                <th>Entrada</th>
+                <th>Confirmar Saída</th>
+            </tr>
+            {% for item in visitas %}
+            <tr>
+                <td>{{ item.pessoa.nome }}</td>
+                <td>{{ item.setor }}</td>
+                <td>{{ item.horarioEntrada }}</td>
+                <td>
+                    <button class="btn waves-effect waves-light light-blue lighten-3" onClick="window.location=`{% url 'cadastro:confirmar_saida' pk=item.pk %}`">
+                        Encerrar Visita
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p>Nenhum visitante no momento.</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
