@@ -18,6 +18,8 @@ $(document).ready(() => {
         let searchField = $('#search').val();
         let expression = new RegExp(searchField, "i");
 
+        let found = false;
+
         if(searchField.length !== 0){
             document.getElementById('itensBusca').innerHTML = '<ul id="result" class="lista-results"></ul>';
         }
@@ -36,6 +38,7 @@ $(document).ready(() => {
                 if(value.fields.nome.search(expression) != -1 || value.fields.cpf.search(expression) != -1){
                     if(count === 0){
                         $('#result').append(`<li value='${ value.pk }' onClick='selecionarVisitante(this);'><div class='firstItem'>${ value.fields.nome } (${ value.fields.cpf })</div></li>`);
+                        found = true;
                     }
                     else{
                         $('#result').append(`<li value='${ value.pk }' onClick='selecionarVisitante(this);'><div class='itemListaBusca'>${ value.fields.nome } (${ value.fields.cpf })</div></li>`);
@@ -43,10 +46,11 @@ $(document).ready(() => {
 
                     count++;
                 }
-                else if(value.fields.nome.search(expression) == 0 && value.fields.cpf.search(expression) == 0){
-                    $('#result').append(`<li onClick='selecionarVisitante();'><div class='firstItem'>Nenhum visitante encontrado.</div></li>`);
-                }
             });
+
+            if(!found){
+                $('#result').append(`<li onClick='fecharBox();'><div class='firstItem'>Nenhum registro encontrado.</div></li>`);
+            }
         });
     });
 });
@@ -55,4 +59,9 @@ function selecionarVisitante(elem){
     document.getElementById('itensBusca').innerHTML = '';
     document.getElementById('id_pessoa').value = elem.value;
     document.getElementById('search').value = elem.textContent;
+}
+
+function fecharBox(){
+    document.getElementById('itensBusca').innerHTML = '';
+    document.getElementById('search').value = '';
 }
