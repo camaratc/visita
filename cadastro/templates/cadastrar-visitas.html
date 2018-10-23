@@ -5,7 +5,7 @@
 <div class="container page-content">
     <h5 class="center-align">Nova Visita</h5>
 
-    <form method="POST" id="form-visita">
+    <form method="POST" id="form-visita" autocomplete="off">
         {% csrf_token %}
         {% for field in form %}
         {% if field.id_for_label == "id_pessoa" %}
