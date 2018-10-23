@@ -13,6 +13,8 @@
                 <div class="col s6">
                     <label for="id_pessoa">Visitante</label>
                     {{ field }}
+                    <input type="text" id="search" name="search" />
+                    <div id="itensBusca"></div>
                 </div>
                 <div class="col s1">
                     <a href="{% url 'cadastro:cadastro_pessoas' %}"><img class="add-pessoa" src="{% static 'img/add.svg' %}" alt="Adicionar Pessoa" /></a>
@@ -65,8 +67,5 @@
             <p>Nenhum visitante no momento.</p>
         {% endif %}
     </div>
-
-    <input type="text" id="search" name="search" />
-    <ul id="result"></ul>
 </div>
 {% endblock %}

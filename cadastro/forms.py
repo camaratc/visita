@@ -27,3 +27,4 @@ class VisitaForm(forms.ModelForm):
 
         self.fields['observacao'].required = False
         self.fields['observacao'].widget = forms.Textarea(attrs={'class': 'materialize-textarea'})
+        self.fields['pessoa'].widget = forms.HiddenInput()

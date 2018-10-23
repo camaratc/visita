@@ -18,6 +18,13 @@ $(document).ready(() => {
         let searchField = $('#search').val();
         let expression = new RegExp(searchField, "i");
 
+        if(searchField.length !== 0){
+            document.getElementById('itensBusca').innerHTML = '<ul id="result" class="lista-results"></ul>';
+        }
+        else{
+            document.getElementById('itensBusca').innerHTML = '';
+        }
+
         $.getJSON('http://127.0.0.1:8000/api/pessoas/', (data) => {
             let count = 0;
 
@@ -27,10 +34,25 @@ $(document).ready(() => {
                 }
 
                 if(value.fields.nome.search(expression) != -1 || value.fields.cpf.search(expression) != -1){
-                    $('#result').append(`<li>${ value.fields.nome } - ${ value.fields.cpf }</li>`);
+                    if(count === 0){
+                        $('#result').append(`<li value='${ value.pk }' onClick='selecionarVisitante(this);'><div class='firstItem'>${ value.fields.nome } (${ value.fields.cpf })</div></li>`);
+                    }
+                    else{
+                        $('#result').append(`<li value='${ value.pk }' onClick='selecionarVisitante(this);'><div class='itemListaBusca'>${ value.fields.nome } (${ value.fields.cpf })</div></li>`);
+                    }
+
                     count++;
+                }
+                else if(value.fields.nome.search(expression) == 0 && value.fields.cpf.search(expression) == 0){
+                    $('#result').append(`<li onClick='selecionarVisitante();'><div class='firstItem'>Nenhum visitante encontrado.</div></li>`);
                 }
             });
         });
     });
 });
+
+function selecionarVisitante(elem){
+    document.getElementById('itensBusca').innerHTML = '';
+    document.getElementById('id_pessoa').value = elem.value;
+    document.getElementById('search').value = elem.textContent;
+}

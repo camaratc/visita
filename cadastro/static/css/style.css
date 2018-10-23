@@ -65,6 +65,37 @@ main {
 #card-historico{
     background-color: #c8e6c9;
 }
+
+/* Busca Visitante */
+
+.lista-results{
+    position: absolute;
+    margin-top: -10px;
+    border: solid;
+    border-width: 1px;
+    border-color: gray;
+    width: 500px;
+    background-color: white;
+    z-index: 1;
+}
+
+.firstItem{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+}
+
+.itemListaBusca{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+}
+
+.itemListaBusca:hover, .firstItem:hover{
+    background-color: #81D4FA;
+    cursor: pointer;
+}
+
 /* Forms ===== */
 
 .select-dropdown{
