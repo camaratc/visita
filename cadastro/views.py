@@ -84,7 +84,6 @@ def historico_visitas(request):
                     ),
                 ).order_by('-data', '-horarioEntrada')
             elif(form.cleaned_data['data_inicial'] and not form.cleaned_data['data_final']):
-                print('i')
                 visitas_lista = Visita.objects.filter(
                     (
                         (
@@ -95,7 +94,6 @@ def historico_visitas(request):
                     ),
                 ).order_by('-data', '-horarioEntrada')
             elif(not form.cleaned_data['data_inicial'] and form.cleaned_data['data_final']):
-                print('f')
                 visitas_lista = Visita.objects.filter(
                     (
                         (

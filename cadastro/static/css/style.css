@@ -21,9 +21,10 @@ main {
 /* Navbar ===== */
 
 .arrow{
-    position: fixed;
+    position: absolute;
+    display: inline-block;
     height: 30px;
-    width: 90px;
+    width: 70px;
     margin-top: 20px;
 }
 
