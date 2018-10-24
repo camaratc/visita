@@ -28,3 +28,9 @@ class VisitaForm(forms.ModelForm):
         self.fields['observacao'].required = False
         self.fields['observacao'].widget = forms.Textarea(attrs={'class': 'materialize-textarea'})
         self.fields['pessoa'].widget = forms.HiddenInput()
+
+class FiltroHistoricoForm(forms.Form):
+    # cod = forms.IntegerField(widget=forms.NumberInput(attrs={'class':'form-control cod'}))
+    busca = forms.CharField(required=False)
+    data_inicial = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date'}))
+    data_final = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date'}))

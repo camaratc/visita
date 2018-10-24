@@ -115,6 +115,15 @@ main {
 
 /* Histórico ===== */
 
+.highlight tbody{
+    cursor: pointer;
+}
+
+.filtros{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
 .visitantes-ativos{
     margin-top: 30px;
 }

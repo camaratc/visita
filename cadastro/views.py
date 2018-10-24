@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.core import serializers
 from django.http import HttpResponse
 from django.db import connection
+from django.db.models import Q
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 import datetime
 
@@ -11,6 +12,7 @@ from .models import Visita
 
 from .forms import PessoaForm
 from .forms import VisitaForm
+from .forms import FiltroHistoricoForm
 
 def index(request):
     return render(request, 'home.html', {})
@@ -64,13 +66,62 @@ def api_pessoas(request):
     return HttpResponse(lista, content_type="application/json")
 
 def historico_visitas(request):
-    visitas_lista = Visita.objects.all().order_by('-data', '-horarioEntrada')
+    if request.method == "GET":
+        form = FiltroHistoricoForm(request.GET)
+
+        if form.is_valid():
+            if(form.cleaned_data['data_inicial'] and form.cleaned_data['data_final']):
+                visitas_lista = Visita.objects.filter(
+                    (
+                        (
+                            Q(pessoa__nome__icontains=form.cleaned_data['busca']) |
+                            Q(setor__icontains=form.cleaned_data['busca'])
+                        ) &
+                        Q(data__range=(
+                            form.cleaned_data['data_inicial'],
+                            form.cleaned_data['data_final'])
+                        )
+                    ),
+                ).order_by('-data', '-horarioEntrada')
+            elif(form.cleaned_data['data_inicial'] and not form.cleaned_data['data_final']):
+                print('i')
+                visitas_lista = Visita.objects.filter(
+                    (
+                        (
+                            Q(pessoa__nome__icontains=form.cleaned_data['busca']) |
+                            Q(setor__icontains=form.cleaned_data['busca'])
+                        ) &
+                        Q(data__gte=form.cleaned_data['data_inicial'])
+                    ),
+                ).order_by('-data', '-horarioEntrada')
+            elif(not form.cleaned_data['data_inicial'] and form.cleaned_data['data_final']):
+                print('f')
+                visitas_lista = Visita.objects.filter(
+                    (
+                        (
+                            Q(pessoa__nome__icontains=form.cleaned_data['busca']) |
+                            Q(setor__icontains=form.cleaned_data['busca'])
+                        ) &
+                        Q(data__lte=form.cleaned_data['data_final'])
+                    ),
+                ).order_by('-data', '-horarioEntrada')
+            else:
+                if(form.cleaned_data['busca']):
+                    visitas_lista = Visita.objects.filter(
+                        Q(pessoa__nome__icontains=form.cleaned_data['busca']) |
+                        Q(setor__icontains=form.cleaned_data['busca'])
+                    ).order_by('-data', '-horarioEntrada')
+                else:
+                    visitas_lista = Visita.objects.all().order_by('-data', '-horarioEntrada')
+    else:
+        form = FiltroHistoricoForm()
+    
     paginator = Paginator(visitas_lista, 10)
 
     page = request.GET.get('page')
     visitas = paginator.get_page(page)
 
-    return render(request, 'historico-visitas.html', {'visitas': visitas})
+    return render(request, 'historico-visitas.html', {'visitas': visitas, 'form': form})
 
 def visita_detalhes(request, pk):
     visita = get_object_or_404(Visita, pk=pk)
