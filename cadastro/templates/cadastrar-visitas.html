@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load staticfiles %}
+{% load static %}
 
 <div class="container page-content">
     <h5 class="center-align">Nova Visita</h5>
@@ -45,6 +46,7 @@
         {% if visitas %}
         <table class="visitas-presentes">
             <tr>
+                <th></th>
                 <th width="40%">Visitante</th>
                 <th>Setor</th>
                 <th>Entrada</th>
@@ -52,6 +54,7 @@
             </tr>
             {% for item in visitas %}
             <tr>
+                <td><img class="foto-visita" src="{% static item.pessoa.foto_principal.url|cut:'cadastro/static/' %}" /></td>
                 <td>{{ item.pessoa.nome }}</td>
                 <td>{{ item.setor }}</td>
                 <td>{{ item.horarioEntrada }}</td>
