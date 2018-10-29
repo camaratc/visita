@@ -19,7 +19,7 @@ def index(request):
 
 def cadastro_pessoas(request):
     if request.method == 'POST':
-        form = PessoaForm(request.POST)
+        form = PessoaForm(request.POST, request.FILES)
 
         if form.is_valid():
             pessoa = form.save(commit = False)

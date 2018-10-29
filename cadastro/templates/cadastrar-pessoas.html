@@ -4,7 +4,7 @@
     <div class="container page-content">
         <h5 class="center-align">Nova Pessoa</h5>
         
-        <form method="POST" id="form-pessoa">
+        <form method="POST" id="form-pessoa" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
                 {% if field.id_for_label == "id_nome" or field.id_for_label == "id_endereco" %}
@@ -39,6 +39,18 @@
                         </div>
                 {% elif field.id_for_label == "id_cidade" %}
                         <div class="col s4">
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    </div>
+                {% elif field.id_for_label == "id_foto_principal" %}
+                    <div class="row">
+                        <div class="col s6 ">
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                {% elif field.id_for_label == "id_foto_adicional" %}
+                        <div class="col s6">
                             {{ field.label_tag }}
                             {{ field }}
                         </div>

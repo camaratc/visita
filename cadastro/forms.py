@@ -7,7 +7,7 @@ from .models import Visita
 class PessoaForm(forms.ModelForm):
     class Meta:
         model = Pessoa
-        fields = ('nome', 'cpf', 'rg', 'endereco', 'bairro', 'estado', 'cidade')
+        fields = ('nome', 'cpf', 'rg', 'endereco', 'bairro', 'estado', 'cidade', 'foto_principal', 'foto_adicional')
     
     def __init__(self, *args, **kwargs):
         super(PessoaForm, self).__init__(*args, **kwargs)
