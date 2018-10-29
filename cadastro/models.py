@@ -8,7 +8,7 @@ class Pessoa(models.Model):
     cpf = models.CharField('CPF', max_length=15)
     rg = models.CharField('RG', max_length=15)
     foto_principal = models.ImageField('Foto do Visitante', upload_to='img/upload/visitantes/{}'.format(time.strftime("%Y/%m/%d")), blank=True)
-    foto_adicional = models.ImageField('Foto Adicional', upload_to='img/upload/visitantes/aux/{}'.format(time.strftime("%Y/%m/%d")), blank=True)
+    foto_adicional = models.ImageField('Foto Adicional', upload_to='img/upload/visitantes/adicional/{}'.format(time.strftime("%Y/%m/%d")), blank=True)
     endereco = models.CharField('Endereço', max_length=255) 
     bairro = models.CharField('Bairro', max_length=100)
     estado = models.CharField('Estado', max_length=2)
