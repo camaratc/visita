@@ -15,6 +15,12 @@
                     </a>
                 </div>
             {% elif request.get_full_path == '/' %}
+            {% elif request.get_full_path|slice:":-2" == '/visitante' %}
+                <div>
+                    <a href="{% url 'cadastro:listar_pessoas' %}">
+                        <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
+                    </a>
+                </div>
             {% else %}
                 <div>
                     <a href="{% url 'cadastro:historico_visitas' %}">
