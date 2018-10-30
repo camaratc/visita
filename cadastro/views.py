@@ -17,9 +17,14 @@ from .forms import FiltroHistoricoForm
 def index(request):
     return render(request, 'home.html', {})
 
-def cadastro_pessoas(request):
-    if request.method == 'POST':
-        form = PessoaForm(request.POST, request.FILES)
+def cadastro_pessoas(request, edit=False):
+    if edit:
+        editar = get_object_or_404(Pessoa, pk=edit.pk)
+    else:
+        editar = None
+
+    if request.method == 'POST':      
+        form = PessoaForm(request.POST, request.FILES, instance=editar)
 
         if form.is_valid():
             pessoa = form.save(commit = False)
@@ -29,7 +34,7 @@ def cadastro_pessoas(request):
 
             return redirect('cadastro:cadastro_visitas')
     else:
-        form = PessoaForm()
+        form = PessoaForm(instance=editar)
 
     return render(request, 'cadastrar-pessoas.html', {'form': form})
 
@@ -47,7 +52,8 @@ def perfil_pessoa(request, pk):
     return render(request, 'pessoa-detalhes.html', {'pessoa': pessoa})
 
 def editar_pessoa(request, pk):
-    pass
+    pessoa = get_object_or_404(Pessoa, pk=pk)
+    return cadastro_pessoas(request, pessoa)
 
 def api_pessoas(request):
     lista = Pessoa.objects.all()

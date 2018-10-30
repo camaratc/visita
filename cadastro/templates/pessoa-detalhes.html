@@ -27,7 +27,13 @@
                 -
             {% endif %}            
         </div>
-    </div>   
+    </div> 
+    
+    <div class="center-align">
+        <button class="btn waves-effect waves-light light-blue lighten-3" onClick="window.location=`{% url 'cadastro:editar_pessoa' pk=pessoa.pk %}`">
+            Editar
+        </button>
+    </div>
 </div>
 
 {% endblock %}
