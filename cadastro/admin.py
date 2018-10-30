@@ -5,9 +5,9 @@ from .models import Pessoa
 from .models import Visita
 
 class PessoaAdmin(admin.ModelAdmin):
-    search_fields = ('nome', 'cpf', 'rg', 'endereco', 'bairro', 'estado', 'cidade', 'dataCadastro')
+    search_fields = ('nome', 'cpf', 'rg', 'endereco', 'bairro', 'estado', 'cidade', 'data_cadastro')
     list_filter = ('estado', 'cidade', ('dataCadastro', DateRangeFilter))
-    list_display = ('nome', 'cpf', 'rg', 'endereco','bairro', 'estado', 'cidade', 'dataCadastro')
+    list_display = ('nome', 'cpf', 'rg', 'endereco','bairro', 'estado', 'cidade', 'data_cadastro')
     ordering = ['nome']
 
 class VisitaAdmin(admin.ModelAdmin):

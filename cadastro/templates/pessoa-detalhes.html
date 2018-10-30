@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+<div class="recuo-pagina container">
+    <div class="center-align">
+        <img class="foto-perfil" src="{% static pessoa.foto_principal.url|cut:'cadastro/static/' %}" />
+        <h3 class="center-align">{{ pessoa.nome }}</h3>
+    </div>
+
+    <div class="recuo-pagina row">
+        <div class="col s6 detalhes-perfil"><b>CPF:</b> {{ pessoa.cpf }}</div>
+        <div class="col s6 detalhes-perfil"><b>RG:</b> {{ pessoa.rg }}</div>
+    </div>
+    <div class="row alinhar">
+        <div class="col s3 detalhes-perfil"><b>Endereço:</b> {{ pessoa.endereco }}</div>
+        <div class="col s3 detalhes-perfil"><b>Bairro:</b> {{ pessoa.bairro }}</div>
+        <div class="col s3 detalhes-perfil"><b>Cidade:</b> {{ pessoa.cidade }}</div>
+        <div class="col s3 detalhes-perfil"><b>UF:</b> {{ pessoa.estado }}</div>
+    </div>
+    <div class="row alinhar">
+        <div class="col s6 detalhes-perfil"><b>Data de Cadastro:</b> {{ pessoa.data_cadastro }}</div>
+        <div class="col s6 detalhes-perfil"><b>Foto Adicional: </b>
+            {% if pessoa.foto_adicional %}
+                <a href="{% static pessoa.foto_adicional.url|cut:'cadastro/static/' %}" target="_blank">Abrir</a>
+            {% else %}
+                -
+            {% endif %}            
+        </div>
+    </div>   
+</div>
+
+{% endblock %}

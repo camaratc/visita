@@ -13,7 +13,7 @@ class Pessoa(models.Model):
     bairro = models.CharField('Bairro', max_length=100)
     estado = models.CharField('Estado', max_length=2)
     cidade = models.CharField('Cidade', max_length=100)
-    dataCadastro = models.DateTimeField('Data de Cadastro', default=timezone.now())
+    data_cadastro = models.DateTimeField('Data de Cadastro', default=timezone.now())
 
     class Meta:
         ordering = ['nome']

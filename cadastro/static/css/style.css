@@ -188,3 +188,28 @@ main {
 .visita-detalhes{
     margin-top: 40px;
 }
+
+.foto-perfil{
+    height: 200px;
+    width: 200px;
+    border: solid;
+    border-radius: 50%;
+    border-width: 3px;
+    border-color: #E3E3E3;
+}
+
+/* .detalhes-perfil{
+    border: solid;
+    border-color: #e3e3e3;
+    border-width: 1px;
+}
+
+.alinhar{
+    margin-top: -20px;
+} */
+
+/* Outros ===== */
+
+.recuo-pagina{
+    margin-top: 50px;
+}

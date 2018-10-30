@@ -43,7 +43,8 @@ def listar_pessoas(request):
     return render(request, 'lista-pessoas.html', {'pessoas': pessoas})
 
 def perfil_pessoa(request, pk):
-    pass
+    pessoa = get_object_or_404(Pessoa, pk=pk)
+    return render(request, 'pessoa-detalhes.html', {'pessoa': pessoa})
 
 def editar_pessoa(request, pk):
     pass
