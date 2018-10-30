@@ -8,7 +8,7 @@
     </head>
     <body>
         <nav class="light-blue lighten-3">
-            {% if request.get_full_path == '/pessoas/' or request.get_full_path == '/visitas/' or request.get_full_path == '/historico/' %}
+            {% if request.get_full_path == '/cadastrar/visitante' or request.get_full_path == '/cadastrar/visita/' or request.get_full_path == '/historico/' or request.get_full_path == '/visitante/lista/' %}
                 <div>
                     <a href="{% url 'cadastro:index' %}">
                         <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
@@ -25,9 +25,10 @@
             <div class="container nav-wrapper ">
                 <a href="{% url 'cadastro:index' %}" class="brand-logo">Portaria</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="{% url 'cadastro:cadastro_pessoas' %}">Cadastrar Pessoa</a></li>
+                    <li><a href="{% url 'cadastro:cadastro_pessoas' %}">Cadastrar Visitante</a></li>
                     <li><a href="{% url 'cadastro:cadastro_visitas' %}">Cadastrar Visita</a></li>
                     <li><a href="{% url 'cadastro:historico_visitas' %}">Histórico de Visitas</a></li>
+                    <li><a href="{% url 'cadastro:listar_pessoas' %}">Listar Visitantes</a></li>
                 </ul>
             </div>
         </nav>

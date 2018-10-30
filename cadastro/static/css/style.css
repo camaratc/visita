@@ -116,11 +116,11 @@ main {
 
 .foto-visita{
     border-radius: 50%;
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
 }
 
-/* Histórico ===== */
+/* Histórico de Visitas e Listar Visitantes ===== */
 
 .highlight tbody{
     cursor: pointer;
@@ -176,6 +176,11 @@ main {
 
 .visitando:hover{
     background-color: #fcb9b2;
+}
+
+.botao-editar{
+    height: 20px;
+    width: 20px;
 }
 
 /* Detalhes ===== */

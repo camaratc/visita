@@ -33,6 +33,26 @@ def cadastro_pessoas(request):
 
     return render(request, 'cadastrar-pessoas.html', {'form': form})
 
+def listar_pessoas(request):
+    lista_pessoas = Pessoa.objects.all().order_by('nome')
+
+    paginator = Paginator(lista_pessoas, 15)
+    page = request.GET.get('page')
+    pessoas = paginator.get_page(page)
+
+    return render(request, 'lista-pessoas.html', {'pessoas': pessoas})
+
+def perfil_pessoa(request, pk):
+    pass
+
+def editar_pessoa(request, pk):
+    pass
+
+def api_pessoas(request):
+    lista = Pessoa.objects.all()
+    lista = serializers.serialize('json', lista)
+    return HttpResponse(lista, content_type="application/json")
+
 def cadastro_visitas(request):
     if request.method == 'POST':
         form = VisitaForm(request.POST)
@@ -59,11 +79,6 @@ def cadastro_visitas(request):
     }
 
     return render(request, 'cadastrar-visitas.html', context)
-
-def api_pessoas(request):
-    lista = Pessoa.objects.all()
-    lista = serializers.serialize('json', lista)
-    return HttpResponse(lista, content_type="application/json")
 
 def historico_visitas(request):
     if request.method == "GET":

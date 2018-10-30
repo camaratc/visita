@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+<div class='container'>
+    <h5 class='center-align'>Lista de Visitantes</h5>
+
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th width="45%">Nome</th>
+                <th width="20%">CPF</th>
+                <th width="20%">Cidade</th>
+                <th width="10%">Estado</th>
+                <th width="5%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in pessoas %}
+                <tr onclick="window.location=`{% url 'cadastro:perfil_pessoa' pk=item.pk %}`">
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.cpf }}</td>
+                    <td>{{ item.cidade }}</td>
+                    <td>{{ item.estado }}</td>
+                    <td onclick="window.location=`{% url 'cadastro:editar_pessoa' pk=item.pk %}`">
+                        <a href="{% url 'cadastro:editar_pessoa' pk=item.pk %}">
+                            <img class="botao-editar" src="{% static 'img/edit.svg' %}" />
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination center-align">
+        <span class="step-links">
+            <p class="current">
+                Página {{ pessoas.number }} de {{ pessoas.paginator.num_pages }}.
+            </p>
+
+            {% if pessoas.has_previous %}
+                <a href="?page=1">&laquo;</a>
+                <a href="?page={{ pessoas.previous_page_number }}">Anterior</a>
+                {% if pessoas.has_next %}
+                    <span>|</span>
+                {% endif %}
+            {% endif %}
+        
+            {% if pessoas.has_next %}
+                <a href="?page={{ pessoas.next_page_number }}">Próxima</a>
+                <a href="?page={{ pessoas.paginator.num_pages }}">&raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+{% endblock %}

@@ -40,17 +40,13 @@
         </thead>
         <tbody>
             {% for item in visitas %}
-            {% if item.horarioSaida == None %}
                 <tr onclick="window.location=`{% url 'cadastro:visita_detalhes' pk=item.pk %}`">
-            {% else %}
-                <tr onclick="window.location=`{% url 'cadastro:visita_detalhes' pk=item.pk %}`">
-            {% endif %}
                     <td>{{ item.pessoa.nome }}</td>
                     <td>{{ item.setor }}</td>
                     <td>{{ item.data|date:'d/M/Y' }}</td>
                     <td>{{ item.horarioEntrada }}</td>
                     {% if item.horarioSaida == None %}
-                        <td>-</tr>
+                        <td>-</td>
                     {% else %}
                         <td>{{ item.horarioSaida }}</td>
                     {% endif %}

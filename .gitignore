@@ -3,3 +3,4 @@ env/
 visitas/__pycache__/
 cadastro/__pycache__/
 cadastro/migrations/__pycache__/
+cadastro/static/img/upload/
