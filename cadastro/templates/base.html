@@ -14,13 +14,13 @@
                         <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
                     </a>
                 </div>
-            {% elif request.get_full_path == '/' %}
-            {% elif request.get_full_path|slice:":-2" == '/visitante' %}
+            {% elif request.get_full_path|slice:":10" == '/visitante' or request.get_full_path|slice:":17" == '/visitante/editar' %}
                 <div>
                     <a href="{% url 'cadastro:listar_pessoas' %}">
                         <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
                     </a>
                 </div>
+            {% elif request.get_full_path == '/' %}
             {% else %}
                 <div>
                     <a href="{% url 'cadastro:historico_visitas' %}">
