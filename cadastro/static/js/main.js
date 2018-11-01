@@ -76,16 +76,3 @@ function fecharBox(){
     document.getElementById('search').value = '';
 }
 
-// Ocultar seta de retorno
-
-$(document).ready(() => {
-    $('body').bind('mousewheel', function(e){
-        if(e.originalEvent.wheelDelta /120 > 0) {
-            console.log('scrolling up !');
-        }
-        else{
-            console.log('scrolling down !');
-        }
-    });
-});
-
