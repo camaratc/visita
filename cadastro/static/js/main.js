@@ -114,17 +114,17 @@ $(document).ready(() => {
             });
 
             if(!found){
-                $('#result').append(`<li onClick='fecharBox();'><div class='firstItem'>Nenhum registro encontrado.</div></li>`);
+                $('#result').append(`<li onClick='fecharBoxVisitante();'><div class='firstItem'>Nenhum registro encontrado.</div></li>`);
             }
         });
     });
 });
 
 function editarVisitante(item){
-    window.location=`/visitante/editar/${item.value}`;
+    window.location=`/visitante/${item.value}`;
 }
 
-function fecharBox(){
+function fecharBoxVisitante(){
     document.getElementById('visitantes-busca').innerHTML = '';
-    document.getElementById('search').value = '';
+    document.getElementById('search-visitantes').value = '';
 }
