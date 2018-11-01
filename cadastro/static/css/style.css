@@ -187,6 +187,10 @@ main {
     width: 20px;
 }
 
+#search-visitante{
+    margin-top: 30px;
+}
+
 /* Detalhes ===== */
 
 .visita-detalhes{

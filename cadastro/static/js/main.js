@@ -76,3 +76,55 @@ function fecharBox(){
     document.getElementById('search').value = '';
 }
 
+$(document).ready(() => {
+    $('#search-visitantes').keyup(() => {
+        $('#result').html('');
+
+        let searchField = $('#search-visitantes').val();
+        let expression = new RegExp(searchField, "i");
+
+        let found = false;
+
+        if(searchField.length !== 0){
+            document.getElementById('visitantes-busca').innerHTML = '<ul id="result" class="lista-results"></ul>';
+        }
+        else{
+            document.getElementById('visitante-busca').innerHTML = '';
+        }
+
+        $.getJSON('http://127.0.0.1:8000/api/pessoas/', (data) => {
+            let count = 0;
+
+            $.each(data, (key, value) => {
+                if(count == 5){
+                    return false;
+                }
+
+                if(value.fields.nome.search(expression) != -1 || value.fields.cpf.search(expression) != -1){
+                    if(count === 0){
+                        $('#result').append(`<li value='${ value.pk }' onClick='editarVisitante(this);'><div class='firstItem'>${ value.fields.nome } (${ value.fields.cpf })</div></li>`);
+                        found = true;
+                    }
+                    else{
+                        $('#result').append(`<li value='${ value.pk }' onClick='editarVisitante(this);'><div class='itemListaBusca'>${ value.fields.nome } (${ value.fields.cpf })</div></li>`);
+                    }
+
+                    count++;
+                }
+            });
+
+            if(!found){
+                $('#result').append(`<li onClick='fecharBox();'><div class='firstItem'>Nenhum registro encontrado.</div></li>`);
+            }
+        });
+    });
+});
+
+function editarVisitante(item){
+    window.location=`/visitante/editar/${item.value}`;
+}
+
+function fecharBox(){
+    document.getElementById('visitantes-busca').innerHTML = '';
+    document.getElementById('search').value = '';
+}
