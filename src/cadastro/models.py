@@ -22,7 +22,7 @@ class Pessoa(models.Model):
         return self.nome
 
 class Visita(models.Model):
-    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.DO_NOTHING)
     data = models.DateField('Data', default=timezone.now())
     horarioEntrada = models.TimeField('Horário de Entrada')
     horarioSaida = models.TimeField('Horário de Saída', null=True, blank=True)
