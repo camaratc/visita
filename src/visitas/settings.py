@@ -85,10 +85,10 @@ WSGI_APPLICATION = 'visitas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'visitas',
+        'NAME': 'portaria',
         'USER': 'admin',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'HOST': 'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }

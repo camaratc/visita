@@ -37,7 +37,7 @@ $(document).ready(() => {
             document.getElementById('itensBusca').innerHTML = '';
         }
 
-        $.getJSON('http://127.0.0.1:8000/api/pessoas/', (data) => {
+        $.getJSON('http://127.0.0.1:8040/api/pessoas/', (data) => {
             let count = 0;
 
             $.each(data, (key, value) => {
@@ -92,7 +92,7 @@ $(document).ready(() => {
             document.getElementById('visitante-busca').innerHTML = '';
         }
 
-        $.getJSON('http://127.0.0.1:8000/api/pessoas/', (data) => {
+        $.getJSON('http://127.0.0.1:8040/api/pessoas/', (data) => {
             let count = 0;
 
             $.each(data, (key, value) => {

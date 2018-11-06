@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.getJSON('https://raw.githubusercontent.com/camaratc/visitas/master/cadastro/static/js/estados_cidades.json', function (data) {
+    $.getJSON('https://raw.githubusercontent.com/camaratc/visitas/master/src/cadastro/static/js/estados_cidades.json', function (data) {
         var items = [];
         var options = '<option value="" selected disabled>Selecionar Estado</option>';
 
