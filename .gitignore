@@ -1,6 +1,6 @@
 .vscode/
-env/
-visitas/__pycache__/
-cadastro/__pycache__/
-cadastro/migrations/__pycache__/
-cadastro/static/img/upload/
+src/env/
+src/visitas/__pycache__/
+src/cadastro/__pycache__/
+src/cadastro/migrations/__pycache__/
+src/cadastro/static/img/upload/

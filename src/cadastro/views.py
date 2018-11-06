@@ -149,4 +149,4 @@ def visita_detalhes(request, pk):
 
 def confirmar_saida(request, pk):
     visita = Visita.objects.filter(pk=pk).update(horarioSaida=timezone.now())
-    return cadastro_visitas(request)
+    return historico_visitas(request)
