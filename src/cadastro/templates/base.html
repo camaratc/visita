@@ -2,6 +2,7 @@
 
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Portaria</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -10,46 +11,56 @@
     </head>
     <body>
         <nav class="light-blue lighten-3">
-            {% if request.get_full_path == '/cadastrar/visitante' or request.get_full_path == '/cadastrar/visita/' or request.get_full_path == '/historico/' or request.get_full_path == '/visitante/lista/' %}
-                <div>
-                    <a href="{% url 'cadastro:index' %}">
-                        <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
-                    </a>
-                </div>
-            {% elif request.get_full_path|slice:":10" == '/visitante' or request.get_full_path|slice:":17" == '/visitante/editar' %}
-                <div>
-                    <a href="{% url 'cadastro:listar_pessoas' %}">
-                        <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
-                    </a>
-                </div>
-            {% elif request.get_full_path == '/' %}
-            {% else %}
-                <div>
-                    <a href="{% url 'cadastro:historico_visitas' %}">
-                        <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
-                    </a>
-                </div>
+            {% if user.is_authenticated %}
+                {% if request.get_full_path == '/cadastrar/visitante' or request.get_full_path == '/cadastrar/visita/' or request.get_full_path == '/historico/' or request.get_full_path == '/visitante/lista/' %}
+                    <div>
+                        <a href="{% url 'cadastro:index' %}">
+                            <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
+                        </a>
+                    </div>
+                {% elif request.get_full_path|slice:":10" == '/visitante' or request.get_full_path|slice:":17" == '/visitante/editar' %}
+                    <div>
+                        <a href="{% url 'cadastro:listar_pessoas' %}">
+                            <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
+                        </a>
+                    </div>
+                {% elif request.get_full_path == '/' %}
+                {% else %}
+                    <div>
+                        <a href="{% url 'cadastro:historico_visitas' %}">
+                            <img class="arrow" src="{% static 'img/arrow-left.svg' %}" />
+                        </a>
+                    </div>
+                {% endif %}
             {% endif %}
+
             <div class="container nav-wrapper ">
                 <a href="{% url 'cadastro:index' %}" class="brand-logo">Portaria</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="dropdown-trigger nested" href="#!" data-target="dropdown1">Visitantes<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Visitas<i class="material-icons right">arrow_drop_down</i></a></li>
-                </ul>
 
-                <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="{% url 'cadastro:cadastro_pessoas' %}">Cadastrar</a></li>
-                    <li><a href="{% url 'cadastro:listar_pessoas' %}">Listar</a></li>
-                </ul>
-            
-                <ul id="dropdown2" class="dropdown-content">
-                    <li><a href="{% url 'cadastro:cadastro_visitas' %}">Cadastrar</a></li>
-                    <li><a href="{% url 'cadastro:historico_visitas' %}">Histórico</a></li>
-                </ul>
+                {% if user.is_authenticated %}
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a class="dropdown-trigger nested" href="#!" data-target="dropdown1">Visitantes<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Visitas<i class="material-icons right">arrow_drop_down</i></a></li>
+                    </ul>
+
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="{% url 'cadastro:cadastro_pessoas' %}">Cadastrar</a></li>
+                        <li><a href="{% url 'cadastro:listar_pessoas' %}">Listar</a></li>
+                    </ul>
+                
+                    <ul id="dropdown2" class="dropdown-content">
+                        <li><a href="{% url 'cadastro:cadastro_visitas' %}">Cadastrar</a></li>
+                        <li><a href="{% url 'cadastro:historico_visitas' %}">Histórico</a></li>
+                    </ul>
+                {% endif %}
             </div>
         </nav>
 
         <main class="main">
+            {% if user.is_authenticated %}
+                <div class="container right-align">Olá, {{ user.first_name }}! <a href="{% url 'logout' %}">Logout</a></div>
+            {% endif %}
+
             {% block content %}
             {% endblock %}
         </main>

@@ -4,6 +4,7 @@ from django.core import serializers
 from django.http import HttpResponse
 from django.db import connection
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 import datetime
 
@@ -14,9 +15,11 @@ from .forms import PessoaForm
 from .forms import VisitaForm
 from .forms import FiltroHistoricoForm
 
+@login_required
 def index(request):
     return render(request, 'home.html', {})
 
+@login_required
 def cadastro_pessoas(request, edit=False):
     if edit:
         editar = get_object_or_404(Pessoa, pk=edit.pk)
@@ -38,6 +41,7 @@ def cadastro_pessoas(request, edit=False):
 
     return render(request, 'cadastrar-pessoas.html', {'form': form})
 
+@login_required
 def listar_pessoas(request):
     lista_pessoas = Pessoa.objects.all().order_by('nome')
 
@@ -47,10 +51,12 @@ def listar_pessoas(request):
 
     return render(request, 'lista-pessoas.html', {'pessoas': pessoas})
 
+@login_required
 def perfil_pessoa(request, pk):
     pessoa = get_object_or_404(Pessoa, pk=pk)
     return render(request, 'pessoa-detalhes.html', {'pessoa': pessoa})
 
+@login_required
 def editar_pessoa(request, pk):
     pessoa = get_object_or_404(Pessoa, pk=pk)
     return cadastro_pessoas(request, pessoa)
@@ -60,6 +66,7 @@ def api_pessoas(request):
     lista = serializers.serialize('json', lista)
     return HttpResponse(lista, content_type="application/json")
 
+@login_required
 def cadastro_visitas(request):
     if request.method == 'POST':
         form = VisitaForm(request.POST)
@@ -87,6 +94,7 @@ def cadastro_visitas(request):
 
     return render(request, 'cadastrar-visitas.html', context)
 
+@login_required
 def historico_visitas(request):
     if request.method == "GET":
         form = FiltroHistoricoForm(request.GET)
@@ -143,10 +151,12 @@ def historico_visitas(request):
 
     return render(request, 'historico-visitas.html', {'visitas': visitas, 'form': form})
 
+@login_required
 def visita_detalhes(request, pk):
     visita = get_object_or_404(Visita, pk=pk)
     return render(request, 'visita-detalhes.html', {'visita': visita})
 
+@login_required
 def confirmar_saida(request, pk):
     visita = Visita.objects.filter(pk=pk).update(horarioSaida=timezone.now())
     return historico_visitas(request)

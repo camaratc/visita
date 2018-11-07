@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'cadastro',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rangefilter',
-    'cadastro',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +136,6 @@ STATICFILES_DIRS = (
     '/cadastro/static/',
     '/static/',
 )
+
+LOGIN_URL = '/sessao/login/'
+LOGIN_REDIRECT_URL = '/'
