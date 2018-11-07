@@ -57,7 +57,8 @@
         </nav>
 
         <main class="main">
-            {% if user.is_authenticated and request.get_full_path != '/sessao/login/' %}
+		{{ request.get_full_path }}
+            {% if user.is_authenticated and request.get_full_path != '/sessao/login' %}
                 <div class="container right-align">Olá, {{ user.first_name }}! <a href="{% url 'logout' %}">Logout</a></div>
             {% endif %}
 

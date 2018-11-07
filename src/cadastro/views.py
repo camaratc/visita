@@ -61,6 +61,7 @@ def editar_pessoa(request, pk):
     pessoa = get_object_or_404(Pessoa, pk=pk)
     return cadastro_pessoas(request, pessoa)
 
+@login_required
 def api_pessoas(request):
     lista = Pessoa.objects.all()
     lista = serializers.serialize('json', lista)
